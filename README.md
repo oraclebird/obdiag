@@ -7,8 +7,8 @@ English | [中文版](README-CN.md)
     <a href="https://github.com/oceanbase/obdiag/releases/latest">
         <img alt="license" src="https://img.shields.io/badge/dynamic/json?color=blue&label=release&query=tag_name&url=https%3A%2F%2Fapi.github.com%2Frepos%2Foceanbase%2Fobdiag%2Freleases%2Flatest" />
     </a>
-    <a href="https://img.shields.io/badge/python%20-3.8.0%2B-blue.svg">
-        <img alt="pyversions" src="https://img.shields.io/badge/python%20-3.8.0%2B-blue.svg" />
+    <a href="https://img.shields.io/badge/python%20-3.11.0%2B-blue.svg">
+        <img alt="pyversions" src="https://img.shields.io/badge/python%20-3.11.0%2B-blue.svg" />
     </a>
     <a href="https://github.com/oceanbase/obdiag">
         <img alt="stars" src="https://img.shields.io/badge/dynamic/json?color=blue&label=stars&query=stargazers_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2Foceanbase%2Fobdiag" />
@@ -37,15 +37,14 @@ You can install obdiag by using these methods:
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://mirrors.aliyun.com/oceanbase/OceanBase.repo
 sudo yum install -y oceanbase-diagnostic-tool
-sh /usr/local/oceanbase-diagnostic-tool/init.sh
+sh /opt/oceanbase-diagnostic-tool/init.sh
 ```
 
 ## Method 2: Install obdiag by using the source code
-To install obdiag on Python >= 3.8, run these commands:
+To install obdiag on Python >= 3.11, run these commands:
 
 ```shell
-pip3 install -r requirements3.txt
-./dev_init.sh
+./dev_helper.sh init
 source ~/.bashrc
 ```
 
@@ -85,10 +84,15 @@ obdiag envisions an open community. We welcome your contributions in any form:
 |2.3.0|2024.06| 2024.07.24 |<ul><li> Root Cause Analysis Scenario Expansion </li><li> Added basic gather feature: tabledump </li><li> Added parameter/variable gather and analyze feature </li><li> Execute infrastructure modifications to support diagnostics for OceanBase clusters deployed on Kubernetes (k8s) </li></ul>|
 |2.4.0|2024.07| 2024.09.03 |<ul><li> usability improvement </li><li> Index Space Size Analysis </li></ul>|
 |2.5.0|2024.09| 2024.10.18 |<ul><li> Cluster Diagnosis Information Display </li><li> Queue Analysis </li><li>Support desensitization of collected observer logs according to specified rules</li></ul>|
-|2.6.0|2024.10| - |<ul><li> Root Cause Analysis Scenario Expansion </li><li> SQL Diagnosis </li></ul>|
-|2.7.0|2024.11| - |<ul><li> Root Cause Analysis Scenario Expansion </li></ul>|
-|3.0.0|2024.12| - |<ul><li> Code plugin transformation </li><li> Support OMS problem diagnosis </li></ul>|
-|4.0.0|2025.01| - |<ul><li> AI for obdiag </li></ul>|
+|2.6.0|2024.10| 2024.11.28 |<ul><li> The new feature added is `obdiag analyze memory` </li><li> obdiag display Phase 2 iteration </li></ul>|
+|3.0.0|2024.12| 2024.12.31 |<ul><li> Code plugin transformation </li><li> Support OMS problem diagnosis </li></ul>|
+|3.1.0|2025.01| 2025.01.22 |<ul><li> obdiag display Phase 3 iteration </li></ul>|
+|3.2.0|2025.01| 2025.03.14 |<ul><li> obdiag adapts to IPv6 </li><li> obdiag gather stack supports ARM machines </li><li> Check Scenario Expansion </li></ul>|
+|3.3.0|2025.04| 2025.04.18 |<ul><li> obdiag check supports python script </li></ul>|
+|3.4.0|2025.05| 2025.05.15 |<ul><li> obdiag rca supports OMS obcdc </li></ul>|
+|3.5.0|2024.06| 2025.06.20 |<ul><li> Root Cause Analysis Scenario Expansion </li><li> Check Scenario Expansion </li></ul>|
+|3.6.0|2024.07| - |<ul><li> Root Cause Analysis Scenario Expansion </li><li> Support MCP </li></ul>|
+|4.0.0|2025.12| - |<ul><li> AI for obdiag </li></ul>|
 
 # Support
 
@@ -117,7 +121,7 @@ git clone https://github.com/your_username/your_repo_here.git
 3. Format your code with black tool 🎨
 
 ```bash
-black -S -l 256 {source_file_or_directory}
+./dev_helper.sh format
 ```
 
 4. Commit Your Changes: Once you've made your enhancements, commit them using Git.

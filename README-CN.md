@@ -5,8 +5,8 @@
     <a href="https://github.com/oceanbase/obdiag/releases/latest">
         <img alt="license" src="https://img.shields.io/badge/dynamic/json?color=blue&label=release&query=tag_name&url=https%3A%2F%2Fapi.github.com%2Frepos%2Foceanbase%2Fobdiag%2Freleases%2Flatest" />
     </a>
-    <a href="https://img.shields.io/badge/python%20-3.8.0%2B-blue.svg">
-        <img alt="pyversions" src="https://img.shields.io/badge/python%20-3.8.0%2B-blue.svg" />
+    <a href="https://img.shields.io/badge/python%20-3.11.0%2B-blue.svg">
+        <img alt="pyversions" src="https://img.shields.io/badge/python%20-3.11.0%2B-blue.svg" />
     </a>
     <a href="https://github.com/oceanbase/obdiag">
         <img alt="stars" src="https://img.shields.io/badge/dynamic/json?color=blue&label=stars&query=stargazers_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2Foceanbase%2Fobdiag" />
@@ -37,15 +37,14 @@ OceanBase Diagnostic Tool (obdiag) 是一款专门为OceanBase打造的敏捷诊
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://mirrors.aliyun.com/oceanbase/OceanBase.repo
 sudo yum install -y oceanbase-diagnostic-tool
-sh /usr/local/oceanbase-diagnostic-tool/init.sh
+sh /opt/oceanbase-diagnostic-tool/init.sh
 ```
 
 ## 方式二：源码安装
-源码安装需要在python >= 3.8的环境下进行
+源码安装需要在python >= 3.11的环境下进行
 
 ```shell
-pip3 install -r requirements3.txt
-./dev_init.sh
+./dev_helper.sh init
 source ~/.bashrc
 ```
 
@@ -81,14 +80,19 @@ obdiag 期望构建一个开放的社区，我们欢迎任何形式的贡献，�
 |2.3.0|2024.06| 2024.07.24 |<ul><li> 根因分析场景扩展 </li><li> 新增基础采集功能: tabledump </li><li> 新增参数/变量比对分析功能 </li><li> 执行底座改造，支持 k8s 部署的 OceanBase 集群诊断 </li></ul>|
 |2.4.0|2024.07| 2024.09.03 |<ul><li> 易用性改造 </li><li> 索引空间分析 </li></ul>|
 |2.5.0|2024.09| 2024.10.18 |<ul><li> 场景化一键展示集群信息功能 </li><li> 队列积压分析 </li><li> 支持对收集的observer日志按指定规则进行敏感内容脱敏 </li></ul>|
-|2.6.0|2024.10| - |<ul><li> SQL 诊断 </li><li> 根因分析场景扩展 </li></ul>|
-|2.7.0|2024.11| - |<ul><li> 根因分析场景扩展 </li></ul>|
-|3.0.0|2024.12| - |<ul><li> 插件化改造 </li><li> 支持 OMS 诊断 </li></ul>|
-|4.0.0|2025.01| - |<ul><li> AI 化探索 </li></ul>|
+|2.6.0|2024.10| 2024.11.28 |<ul><li> 新增 obdiag analyze memory 功能 </li><li> obdiag display 二期迭代 </li></ul>|
+|3.0.0|2024.12| 2024.12.31 |<ul><li> 插件化改造 </li><li> 支持 OMS 诊断 </li></ul>|
+|3.1.0|2025.01| 2025.01.22 |<ul><li> obdiag display 三期迭代 </li></ul>|
+|3.2.0|2025.01| 2025.03.14 |<ul><li> obdiag 适配 ipv6 </li><li> obdiag gather stack 支持 arm 机器 </li><li> 巡检场景扩展 </li></ul>|
+|3.3.0|2025.04| 2025.04.18 |<ul><li> obdiag check 支持 python 脚本以适应复杂场景的巡检 </li></ul>|
+|3.4.0|2025.05| 2025.05.15 |<ul><li> obdiag rca 支持 OMS obcdc 通用问题根因分析 </li><li> 新增 obdiag gather dbms_xplan </li></ul>|
+|3.5.0|2024.06| 2025.06.20 |<ul><li> 根因分析场景扩展 </li><li> 巡检场景扩展 </li></ul>|
+|3.6.0|2024.07| - |<ul><li> 根因分析场景扩展 </li><li> 支持 MCP </li></ul>|
+|4.0.0|2025.12| - |<ul><li> AI 化探索 </li></ul>|
 
 # 支持
 
-如果您在使用 OceanBase LogProxy 时遇到任何问题，欢迎联系我们寻求帮助：
+如果您在使用 obdiag 时遇到任何问题，欢迎联系我们寻求帮助：
 
 - [GitHub Issue](https://github.com/oceanbase/obdiag/issues)
 - [官方网站](https://www.oceanbase.com/docs/obdiag-cn)
@@ -111,7 +115,7 @@ git clone https://github.com/your_username/your_repo_here.git
 3. 通过 black 工具统一格式化你的代码 🎨
 
 ```bash
-black -S -l 256 {source_file_or_directory}
+./dev_helper.sh format
 ```
 
 4. 提交你的改动：完成优化后，利用Git提交你的修改。
